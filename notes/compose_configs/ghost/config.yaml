@@ -1,0 +1,29 @@
+# find and replace "randompassword123" with a random password
+
+services:
+  ghost:
+    image: ghost:5-alpine
+    restart: unless-stopped
+    ports:
+      - 3122:2368
+    environment:
+      database__client: mysql
+      database__connection__host: db
+      database__connection__user: ghost
+      database__connection__password: randompassword123
+      database__connection__database: ghost
+      url: http://localhost:3122
+    volumes:
+      - ./ghost:/var/lib/ghost/content
+    depends_on:
+      - db
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ghost
+      MYSQL_USER: ghost
+      MYSQL_PASSWORD: randompassword123
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - ./db:/var/lib/mysql
