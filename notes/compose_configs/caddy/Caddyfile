@@ -1,0 +1,15 @@
+{
+  email certs@sovereign.zue.dev
+}
+
+https://sovereign.zue.dev {
+  file_server browse
+}
+
+https://wordpress12377.sovereign.zue.dev {
+  reverse_proxy localhost:5738
+}
+
+https://ghost342890.sovereign.zue.dev {
+  reverse_proxy localhost:3122
+}

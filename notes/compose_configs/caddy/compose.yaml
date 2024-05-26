@@ -1,0 +1,10 @@
+services:
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./public:/public:ro
+      - ./data:/data
+      - ./config:/config
+    network_mode: host
