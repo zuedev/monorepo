@@ -12,6 +12,13 @@ services:
       database__connection__user: ghost
       database__connection__password: randompassword123
       database__connection__database: ghost
+      # mail__transport: SMTP
+      # mail__options__service: Mailgun
+      # mail__options__host: smtp.eu.mailgun.org
+      # mail__options__port: 465
+      # mail__options__secure: true
+      # mail__options__auth__user: noreply@example.tld
+      # mail__options__auth__pass: someawesomepassword123
       url: http://localhost:3122
     volumes:
       - ./ghost:/var/lib/ghost/content
