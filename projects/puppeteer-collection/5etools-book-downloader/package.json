@@ -1,0 +1,9 @@
+{
+  "type": "module",
+  "scripts": {
+    "start": "node source/main.js"
+  },
+  "dependencies": {
+    "puppeteer": "^22.15.0"
+  }
+}
