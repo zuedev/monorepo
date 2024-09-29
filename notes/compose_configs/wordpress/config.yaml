@@ -2,7 +2,7 @@
 
 services:
   wordpress:
-    image: wordpress:6-fpm-alpine
+    image: wordpress:6-apache
     restart: unless-stopped
     ports:
       - 5738:80
