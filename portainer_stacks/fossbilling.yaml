@@ -11,6 +11,7 @@ services:
         RUN chmod 0644 /etc/cron.d/fossbilling-cron
         RUN crontab /etc/cron.d/fossbilling-cron
         RUN touch /var/log/cron.log
+        RUN service cron start
     restart: unless-stopped
     ports:
       - 80:80
