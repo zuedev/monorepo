@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  fossbilling:
+    build:
+      context: .
+      dockerfile_inline: |
+        FROM fossbilling/fossbilling:latest
+        RUN apt update && apt install cron -y
+        RUN echo "*/5 * * * * php /var/www/html/cron.php" > /etc/cron.d/fossbilling-cron
+        RUN chmod 0644 /etc/cron.d/fossbilling-cron
+        RUN crontab /etc/cron.d/fossbilling-cron
+        RUN touch /var/log/cron.log
+    restart: unless-stopped
+    ports:
+      - 80:80
+    volumes:
+      - fossbilling:/var/www/html
+
+  mysql:
+    image: mysql:8.2
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: fossbilling
+      MYSQL_USER: fossbilling
+      MYSQL_PASSWORD: CHANGE_ME
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - mysql:/var/lib/mysql
+
+volumes:
+  fossbilling:
+  mysql:
