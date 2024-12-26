@@ -6,12 +6,15 @@ services:
       context: .
       dockerfile_inline: |
         FROM fossbilling/fossbilling:latest
-        RUN apt update && apt install cron -y
-        RUN echo "*/5 * * * * php /var/www/html/cron.php" > /etc/cron.d/fossbilling-cron
-        RUN chmod 0644 /etc/cron.d/fossbilling-cron
-        RUN crontab /etc/cron.d/fossbilling-cron
-        RUN touch /var/log/cron.log
-        RUN service cron start
+        RUN apt update && \
+            apt install cron -y && \
+            apt clean && \
+            rm -rf /var/lib/apt/lists/*
+        RUN echo "*/5 * * * * root php /var/www/html/cron.php" > /etc/cron.d/fossbilling-cron && \
+            chmod 0644 /etc/cron.d/fossbilling-cron && \
+            crontab /etc/cron.d/fossbilling-cron && \
+            touch /var/log/cron.log && \
+            service cron start
     restart: unless-stopped
     ports:
       - 80:80
