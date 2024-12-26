@@ -10,11 +10,8 @@ services:
             apt install cron neovim -y && \
             apt clean && \
             rm -rf /var/lib/apt/lists/*
-        RUN echo "*/5 * * * * root php /var/www/html/cron.php" > /etc/cron.d/fossbilling-cron && \
-            chmod 0644 /etc/cron.d/fossbilling-cron && \
-            crontab /etc/cron.d/fossbilling-cron && \
-            touch /var/log/cron.log && \
-            service cron start
+        RUN echo "* * * * * root php /var/www/html/cron.php" >> /etc/crontab
+        CMD ["sh", "-c", "cron ; apache2-foreground"]
     pull_policy: build
     restart: unless-stopped
     ports:
