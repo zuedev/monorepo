@@ -7,7 +7,7 @@ services:
       dockerfile_inline: |
         FROM fossbilling/fossbilling:latest
         RUN apt update && \
-            apt install cron -y && \
+            apt install cron neovim -y && \
             apt clean && \
             rm -rf /var/lib/apt/lists/*
         RUN echo "*/5 * * * * root php /var/www/html/cron.php" > /etc/cron.d/fossbilling-cron && \
@@ -15,6 +15,7 @@ services:
             crontab /etc/cron.d/fossbilling-cron && \
             touch /var/log/cron.log && \
             service cron start
+    pull_policy: build
     restart: unless-stopped
     ports:
       - 80:80
