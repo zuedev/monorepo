@@ -1,0 +1,21 @@
+services:
+  caddy:
+    build:
+        context: .
+        dockerfile_inline: |
+          FROM caddy:2-builder AS builder
+          RUN xcaddy build \
+              --with github.com/caddy-dns/cloudflare
+          FROM caddy:2
+          COPY --from=builder /usr/bin/caddy /usr/bin/caddy
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - etc:/etc/caddy
+      - data:/data
+      - config:/config
+
+volumes:
+  etc:
+  data:
+  config:
