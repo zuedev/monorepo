@@ -1,0 +1,49 @@
+;;
+;; Domain:     uagpmc.com.
+;; Exported:   2025-01-04 18:08:01
+;;
+;; This file is intended for use for informational and archival
+;; purposes ONLY and MUST be edited before use on a production
+;; DNS server.  In particular, you must:
+;;   -- update the SOA record with the correct authoritative name server
+;;   -- update the SOA record with the contact e-mail address information
+;;   -- update the NS record(s) with the authoritative name servers for this domain.
+;;
+;; For further information, please consult the BIND documentation
+;; located on the following website:
+;;
+;; http://www.isc.org/
+;;
+;; And RFC 1035:
+;;
+;; http://www.ietf.org/rfc/rfc1035.txt
+;;
+;; Please note that we do NOT offer technical support for any use
+;; of this zone data, the BIND name server, or any other third-party
+;; DNS software.
+;;
+;; Use at your own risk.
+;; SOA Record
+uagpmc.com	3600	IN	SOA	jerry.ns.cloudflare.com. dns.cloudflare.com. 2048768068 10000 2400 604800 3600
+
+;; NS Records
+uagpmc.com.	86400	IN	NS	jerry.ns.cloudflare.com.
+uagpmc.com.	86400	IN	NS	kara.ns.cloudflare.com.
+
+;; CNAME Records
+play.uagpmc.com.	1	IN	CNAME	sovereign.zue.dev. ; cf_tags=cf-proxied:false
+uagpmc.com.	1	IN	CNAME	uagpmc-com.pages.dev. ; cf_tags=cf-proxied:true
+www.uagpmc.com.	1	IN	CNAME	uagpmc-com.pages.dev. ; cf_tags=cf-proxied:true
+
+;; MX Records
+uagpmc.com.	1	IN	MX	82 route3.mx.cloudflare.net.
+uagpmc.com.	1	IN	MX	88 route2.mx.cloudflare.net.
+uagpmc.com.	1	IN	MX	19 route1.mx.cloudflare.net.
+
+;; SRV Records
+_ts3._udp.teamspeak.uagpmc.com.	1	IN	SRV	0 0 9987 sovereign.zue.dev.
+
+;; TXT Records
+_atproto.uagpmc.com.	1	IN	TXT	"did=did:plc:w5scrdejehg55qkdpj7p3f3r" ; TF: bsky verification
+_dmarc.uagpmc.com.	1	IN	TXT	"v=DMARC1;  p=reject; rua=mailto:b062800e0a684a5ea6d663931c900c4e@dmarc-reports.cloudflare.net" ; cloudflare emails
+uagpmc.com.	1	IN	TXT	"v=spf1 include:_spf.mx.cloudflare.net -all" ; cloudflare emails

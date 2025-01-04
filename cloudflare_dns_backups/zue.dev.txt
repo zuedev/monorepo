@@ -1,0 +1,121 @@
+;;
+;; Domain:     zue.dev.
+;; Exported:   2025-01-04 18:07:36
+;;
+;; This file is intended for use for informational and archival
+;; purposes ONLY and MUST be edited before use on a production
+;; DNS server.  In particular, you must:
+;;   -- update the SOA record with the correct authoritative name server
+;;   -- update the SOA record with the contact e-mail address information
+;;   -- update the NS record(s) with the authoritative name servers for this domain.
+;;
+;; For further information, please consult the BIND documentation
+;; located on the following website:
+;;
+;; http://www.isc.org/
+;;
+;; And RFC 1035:
+;;
+;; http://www.ietf.org/rfc/rfc1035.txt
+;;
+;; Please note that we do NOT offer technical support for any use
+;; of this zone data, the BIND name server, or any other third-party
+;; DNS software.
+;;
+;; Use at your own risk.
+;; SOA Record
+zue.dev	3600	IN	SOA	jerry.ns.cloudflare.com. dns.cloudflare.com. 2048768065 10000 2400 604800 3600
+
+;; NS Records
+zue.dev.	86400	IN	NS	jerry.ns.cloudflare.com.
+zue.dev.	86400	IN	NS	kara.ns.cloudflare.com.
+
+;; A Records
+mail-in-a-box.zue.dev.	1	IN	A	188.245.126.45 ; cf_tags=cf-proxied:false
+sovereign.zue.dev.	1	IN	A	109.146.19.41 ; cf_tags=cf-proxied:false
+
+;; AAAA Records
+gateway.zue.dev.	1	IN	AAAA	2a01:4f8:1c1e:6825:: ; cf_tags=cf-proxied:false
+sovereign.zue.dev.	1	IN	AAAA	2a00:23c6:7169:9d00:1871:f7d4:10d8:7747 ; updated by ddns cf_tags=cf-proxied:false
+
+;; CAA Records
+amplify-sandbox.zue.dev.	1	IN	CAA	0 issue "amazontrust.com" ; https://github.com/zuedev/amplify-sandbox-zue-dev
+
+;; CNAME Records
+2eytzuztn325iolhi3twrxi3jykyb5jg._domainkey.zue.dev.	1	IN	CNAME	2eytzuztn325iolhi3twrxi3jykyb5jg.dkim.amazonses.com. ; cf_tags=cf-proxied:false
+autoconfig.mail-in-a-box.zue.dev.	1	IN	CNAME	mail-in-a-box.zue.dev. ; cf_tags=cf-proxied:false
+autodiscover.mail-in-a-box.zue.dev.	1	IN	CNAME	mail-in-a-box.zue.dev. ; cf_tags=cf-proxied:false
+*.baldur.zue.dev.	1	IN	CNAME	baldur.zue.dev. ; TF: baldur server wildcard cf_tags=cf-proxied:false
+baldur.zue.dev.	1	IN	CNAME	sovereign.zue.dev. ; TF: baldur server main (on sovereign) cf_tags=cf-proxied:false
+firebase1._domainkey.firebase-sandbox.zue.dev.	1	IN	CNAME	mail-firebase--sandbox-zue-dev.dkim1._domainkey.firebasemail.com. ; zuedev/firebase-sandbox-zue-dev cf_tags=cf-proxied:false
+firebase2._domainkey.firebase-sandbox.zue.dev.	1	IN	CNAME	mail-firebase--sandbox-zue-dev.dkim2._domainkey.firebasemail.com. ; zuedev/firebase-sandbox-zue-dev cf_tags=cf-proxied:false
+firebase-sandbox.zue.dev.	1	IN	CNAME	fir-sandbox-zue-dev.web.app. ; zuedev/firebase-sandbox-zue-dev cf_tags=cf-proxied:false
+fossbilling.sovereign.zue.dev.	1	IN	CNAME	sovereign.zue.dev. ; cf_tags=cf-proxied:false
+git.zue.dev.	1	IN	CNAME	sovereign.zue.dev. ; cf_tags=cf-proxied:false
+gumroad.zue.dev.	1	IN	CNAME	domains.gumroad.com. ; terraform cf_tags=cf-proxied:true
+hs4by42bsivcyaasl24txd73ybun6lhz._domainkey.mealie.sovereign.zue.dev.	1	IN	CNAME	hs4by42bsivcyaasl24txd73ybun6lhz.dkim.amazonses.com. ; cf_tags=cf-proxied:false
+iltwjfurohirkesaa5dtamzufre4bh77._domainkey.zue.dev.	1	IN	CNAME	iltwjfurohirkesaa5dtamzufre4bh77.dkim.amazonses.com. ; cf_tags=cf-proxied:false
+ki534thz3pk24kivsib3atimfyzjkntz._domainkey.mealie.sovereign.zue.dev.	1	IN	CNAME	ki534thz3pk24kivsib3atimfyzjkntz.dkim.amazonses.com. ; cf_tags=cf-proxied:false
+lrxltrlmbnisgjbcauk5fosruht6airf._domainkey.heyform.sovereign.zue.dev.	1	IN	CNAME	lrxltrlmbnisgjbcauk5fosruht6airf.dkim.amazonses.com. ; cf_tags=cf-proxied:false
+mastering-cloudflare.zue.dev.	1	IN	CNAME	domains.gumroad.com. ; cf_tags=cf-proxied:true
+mta-sts.mail-in-a-box.zue.dev.	1	IN	CNAME	mail-in-a-box.zue.dev. ; cf_tags=cf-proxied:false
+nbqbdpb4kmyswoxmc6odnrvyri62rcln._domainkey.mealie.sovereign.zue.dev.	1	IN	CNAME	nbqbdpb4kmyswoxmc6odnrvyri62rcln.dkim.amazonses.com. ; cf_tags=cf-proxied:false
+pzvvblxyoxhg24ydtkqiotnltrhfroqu._domainkey.zue.dev.	1	IN	CNAME	pzvvblxyoxhg24ydtkqiotnltrhfroqu.dkim.amazonses.com. ; cf_tags=cf-proxied:false
+*.sovereign.zue.dev.	1	IN	CNAME	sovereign.zue.dev. ; TF: sovereign server wildcard cf_tags=cf-proxied:false
+u6k5oc2vini2hjmh35aktbhy7syluyat._domainkey.heyform.sovereign.zue.dev.	1	IN	CNAME	u6k5oc2vini2hjmh35aktbhy7syluyat.dkim.amazonses.com. ; cf_tags=cf-proxied:false
+utj7irosdkd3y54vmi2r3vabnt4fj2ud._domainkey.heyform.sovereign.zue.dev.	1	IN	CNAME	utj7irosdkd3y54vmi2r3vabnt4fj2ud.dkim.amazonses.com. ; cf_tags=cf-proxied:false
+worlds.zue.dev.	1	IN	CNAME	worlds-zue-dev.pages.dev. ; TF: worlds site on cf pages cf_tags=cf-proxied:true
+www.mail-in-a-box.zue.dev.	1	IN	CNAME	mail-in-a-box.zue.dev. ; cf_tags=cf-proxied:false
+www.zue.dev.	1	IN	CNAME	zue.dev. ; TF: www subdomain to apex domain cf_tags=cf-proxied:true
+zue.dev.	1	IN	CNAME	www-zue-dev.pages.dev. ; TF: Apex domain to CF pages cf_tags=cf-proxied:true
+
+;; DS Records
+mail-in-a-box.zue.dev.	1	IN	DS	35511 13 2 CFA23AFFD5E1C9D0B66037B7B68013734214D249BC9D1811B7B35203249BD563
+
+;; MX Records
+aws-ses.heyform.sovereign.zue.dev.	1	IN	MX	10 feedback-smtp.eu-west-2.amazonses.com.
+aws-ses.mealie.sovereign.zue.dev.	1	IN	MX	10 feedback-smtp.eu-west-2.amazonses.com.
+aws-ses.zue.dev.	1	IN	MX	10 feedback-smtp.eu-west-2.amazonses.com.
+fossbilling.sovereign.zue.dev.	1	IN	MX	10 blackhole.scw-tem.cloud.
+git.zue.dev.	1	IN	MX	3 route3.mx.cloudflare.net.
+git.zue.dev.	1	IN	MX	73 route2.mx.cloudflare.net.
+git.zue.dev.	1	IN	MX	53 route1.mx.cloudflare.net.
+mail-in-a-box.zue.dev.	1	IN	MX	10 mail-in-a-box.zue.dev.
+zue.dev.	1	IN	MX	3 route3.mx.cloudflare.net.
+zue.dev.	1	IN	MX	73 route2.mx.cloudflare.net.
+zue.dev.	1	IN	MX	53 route1.mx.cloudflare.net.
+
+;; NS Records
+amplify-sandbox.zue.dev.	1	IN	NS	ns-1172.awsdns-18.org. ; https://github.com/zuedev/amplify-sandbox-zue-dev
+amplify-sandbox.zue.dev.	1	IN	NS	ns-765.awsdns-31.net. ; https://github.com/zuedev/amplify-sandbox-zue-dev
+amplify-sandbox.zue.dev.	1	IN	NS	ns-1857.awsdns-40.co.uk. ; https://github.com/zuedev/amplify-sandbox-zue-dev
+amplify-sandbox.zue.dev.	1	IN	NS	ns-473.awsdns-59.com. ; https://github.com/zuedev/amplify-sandbox-zue-dev
+aws.zue.dev.	1	IN	NS	ns-1732.awsdns-24.co.uk. ; TF-241228150312
+aws.zue.dev.	1	IN	NS	ns-1179.awsdns-19.org. ; TF-241228150312
+aws.zue.dev.	1	IN	NS	ns-810.awsdns-37.net. ; TF-241228150312
+aws.zue.dev.	1	IN	NS	ns-298.awsdns-37.com. ; TF-241228150312
+mail-in-a-box.zue.dev.	1	IN	NS	mail-in-a-box.zue.dev.
+ns1.mail-in-a-box.zue.dev.	1	IN	NS	mail-in-a-box.zue.dev.
+ns2.mail-in-a-box.zue.dev.	1	IN	NS	mail-in-a-box.zue.dev.
+
+;; TXT Records
+32ecebc1-6144-4962-8a5d-d162420dc901._domainkey.fossbilling.sovereign.zue.dev.	1	IN	TXT	"v=DKIM1; h=sha256; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1f9vt37aM5SHxouQdZse21smoLTAOUZtPeiST3vt3VuxQPoUMbF4eEtam3+B7JuJ+9VrKHDlQ1D8y+3DZyzN53BGrUt1zO4ktOfnYF72aWiFGfZROiDkC+0CV4emelT6wkMniBHyWn1nzTSuUcVBgCu2vX8fowjZl6G6hAdbKBER+j6ZtO6qWdj" "wKIl9phYGtN6gobAj1RhUYQ40Sd7/p2uH+nuFnCj4gsvPOu3r0n5qJ6xRXnbOUzjVNR+iGoasB+rDIiFpGqx98GLEABG0a/nrfPNC6OHi588aTbAb0mmSP9daChb+Z4dJzsljD8zK4Pc1/xY02M68phdj5I/0/QIDAQAB"
+32ecebc1-6144-4962-8a5d-d162420dc901._domainkey.git.zue.dev.	1	IN	TXT	"v=DKIM1; h=sha256; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7lJ8I/WGd0XEl51e5h4j3iNBk++qJS3aG3ho2UKpxfinrCiFd7DlEDHydIdL7Bi3mUhvFkLu8CWkbD6mNzL954/37ADJLC9AEUxW0DY9tI0OdVvIsWWQDSsP4HpLKSaC73NmsAIUHT2Onyzwd4qAC1YqGTN6TJFfCTRyraNee4qICtI9KJp38Pw" "PcdzRUgfAtCKDRbeIP3Qj5l8X3xxsHCjlE84SriREhiEPlXEH1enaVX0H2PATpskZhWez+XFP56Xclqulsv9QjKWx3tA0DJjMR7qB52G55P5wvtMBzqsf5Q0tPDnCaFY0qlndHseKBobwEieG/ose6V12OnKMhwIDAQAB"
+_atproto.zue.dev.	1	IN	TXT	"did=did:plc:k7ll57qjijot76t6m57w74bz" ; TF: bsky verification
+aws-ses.heyform.sovereign.zue.dev.	1	IN	TXT	"v=spf1 include:amazonses.com ~all"
+aws-ses.mealie.sovereign.zue.dev.	1	IN	TXT	"v=spf1 include:amazonses.com ~all"
+aws-ses.zue.dev.	1	IN	TXT	"v=spf1 include:amazonses.com ~all"
+_discord.zue.dev.	1	IN	TXT	"dh=6ec7b2b96336f5cc467394ccc05dbe1a65cfe4e4" ; TF: discord verification
+_dmarc.fossbilling.sovereign.zue.dev.	1	IN	TXT	"v=DMARC1; p=none"
+_dmarc.git.zue.dev.	1	IN	TXT	"v=DMARC1; p=none"
+_dmarc.heyform.sovereign.zue.dev.	1	IN	TXT	"v=DMARC1; p=none;"
+_dmarc.mealie.sovereign.zue.dev.	1	IN	TXT	"v=DMARC1; p=none;"
+_dmarc.zue.dev.	1	IN	TXT	"v=DMARC1;  p=reject; rua=mailto:6225201473c54e6f8934e013cb490275@dmarc-reports.cloudflare.net" ; managed by cloudflare
+firebase-sandbox.zue.dev.	1	IN	TXT	"firebase=fir-sandbox-zue-dev" ; zuedev/firebase-sandbox-zue-dev
+firebase-sandbox.zue.dev.	1	IN	TXT	"v=spf1 include:_spf.firebasemail.com ~all" ; zuedev/firebase-sandbox-zue-dev
+fossbilling.sovereign.zue.dev.	1	IN	TXT	"v=spf1 include:_spf.tem.scaleway.com -all"
+git.zue.dev.	1	IN	TXT	"v=spf1 include:_spf.mx.cloudflare.net include:_spf.tem.scaleway.com ~all"
+zue.dev.	3600	IN	TXT	"google-site-verification=jPOS5A6YgDgzL2o_xK3ywrgPxmSxGXVDWzV7VTlezNg"
+zue.dev.	1	IN	TXT	"atlassian-domain-verification=uneiyJ25jZ8WgTHSg6wskTeEE4ghqgJVpM8NwpaEM0J1LkPog/ftZKWaPrD5qszj" ; TF: atlassian verification
+zue.dev.	1	IN	TXT	"v=spf1 include:_spf.mx.cloudflare.net -all" ; managed by cloudflare email
+zue.dev.	1	IN	TXT	"openai-domain-verification=dv-DGZaQGLeJGHXRkUmpeX8XlUw" ; TF: openai verification

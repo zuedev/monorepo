@@ -1,0 +1,65 @@
+;;
+;; Domain:     termina.one.
+;; Exported:   2025-01-04 18:08:05
+;;
+;; This file is intended for use for informational and archival
+;; purposes ONLY and MUST be edited before use on a production
+;; DNS server.  In particular, you must:
+;;   -- update the SOA record with the correct authoritative name server
+;;   -- update the SOA record with the contact e-mail address information
+;;   -- update the NS record(s) with the authoritative name servers for this domain.
+;;
+;; For further information, please consult the BIND documentation
+;; located on the following website:
+;;
+;; http://www.isc.org/
+;;
+;; And RFC 1035:
+;;
+;; http://www.ietf.org/rfc/rfc1035.txt
+;;
+;; Please note that we do NOT offer technical support for any use
+;; of this zone data, the BIND name server, or any other third-party
+;; DNS software.
+;;
+;; Use at your own risk.
+;; SOA Record
+termina.one	3600	IN	SOA	jerry.ns.cloudflare.com. dns.cloudflare.com. 2048768068 10000 2400 604800 3600
+
+;; NS Records
+termina.one.	86400	IN	NS	jerry.ns.cloudflare.com.
+termina.one.	86400	IN	NS	kara.ns.cloudflare.com.
+
+;; CNAME Records
+api.termina.one.	1	IN	CNAME	baldur.zue.dev. ; cf_tags=cf-proxied:false
+b67bwg5vt4eywj7sfw4oldtpxznozkvg._domainkey.termina.one.	1	IN	CNAME	b67bwg5vt4eywj7sfw4oldtpxznozkvg.dkim.amazonses.com. ; TF: apex amazon ses cf_tags=cf-proxied:false
+chatwoot.termina.one.	1	IN	CNAME	caprover.zue.dev. ; cf_tags=cf-proxied:false
+dolibarr.termina.one.	1	IN	CNAME	caprover.zue.dev. ; cf_tags=cf-proxied:false
+gdbkdrffg24xwy7636c7jcrmhmu6rotn._domainkey.termina.one.	1	IN	CNAME	gdbkdrffg24xwy7636c7jcrmhmu6rotn.dkim.amazonses.com. ; TF: apex amazon ses cf_tags=cf-proxied:false
+termina.one.	1	IN	CNAME	www-termina-one.pages.dev. ; TF: Apex domain to CF pages cf_tags=cf-proxied:true
+uvjlu6egl3mmqod7q3qjhpff25u6ahdt._domainkey.termina.one.	1	IN	CNAME	uvjlu6egl3mmqod7q3qjhpff25u6ahdt.dkim.amazonses.com. ; TF: apex amazon ses cf_tags=cf-proxied:false
+www.termina.one.	1	IN	CNAME	termina.one. ; TF: www subdomain to apex domain cf_tags=cf-proxied:true
+
+;; MX Records
+aws-ses.termina.one.	1	IN	MX	10 feedback-smtp.eu-west-2.amazonses.com. ; TF: apex amazon ses
+billing.termina.one.	1	IN	MX	87 route3.mx.cloudflare.net.
+billing.termina.one.	1	IN	MX	36 route2.mx.cloudflare.net.
+billing.termina.one.	1	IN	MX	94 route1.mx.cloudflare.net.
+code.termina.one.	1	IN	MX	10 blackhole.scw-tem.cloud.
+termina.one.	1	IN	MX	87 route3.mx.cloudflare.net.
+termina.one.	1	IN	MX	36 route2.mx.cloudflare.net.
+termina.one.	1	IN	MX	94 route1.mx.cloudflare.net.
+
+;; TXT Records
+32ecebc1-6144-4962-8a5d-d162420dc901._domainkey.billing.termina.one.	1	IN	TXT	"v=DKIM1; h=sha256; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4UCfgmR+tjVoXCZYJnmOvzZBbStKkA89srGKP4HELeOOJLuir1AKx4WOwngqBaHw3YDBUdwVYtr4v2ZbGrRPAkMTbvHBS9OdGQcsqSyb/lzw4usUZeHP2CRfPbD0kKzWhuNyISYonOLkiion4jrVoj51zBLqa7huSByVubTx88504XU8bHZ+G21" "uGnPgOMhT+DuG5UDOADSk6HPHPgAVWAkNvpIsjbeEVqwVRpvDAr/3QqMk12KS9eaLi0ythhjDI9mf1fTTNRx2y9HXSueIA+k7YD0gUUamCE6hppOu0H9Lz9jM+dGHqDdkdXO5OPJOlqJVuKsCgO45hlMM8qa/ZQIDAQAB"
+32ecebc1-6144-4962-8a5d-d162420dc901._domainkey.code.termina.one.	1	IN	TXT	"v=DKIM1; h=sha256; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwlSclaiFNPhJKDI4jczOQAsDhdwd/hqxrHpr8H1dupDgzdGih0aWdMV6kmvUac6vI9mqgX7c0XNiJZGeyAQkiMtJvm3yCdMBI2BPkWTcK7VLGWrATagFGO6BDcSU8CWF9dyIEV790F8hLbHQhzOr057IJtzpoQqRKJsIPEcL491P8sjDbRjA/Ba" "kbXzEUoqK7Mbb1PTKthg3wkwHxl0FCNFxEsPVzPdbEmpsZr5AfBF4WLFaMqDxcuyAeDpQFkknnnYgrQrbILisEQ3GIn7NbXOLQyo3njnbOVLRN4ByXsk9SzdegCl8S56wcMO+2D4GfbwUi+85KeU8SSdMwn8R6wIDAQAB"
+aws-ses.termina.one.	1	IN	TXT	"v=spf1 include:amazonses.com -all" ; TF: apex amazon ses
+billing.termina.one.	1	IN	TXT	"v=spf1 include:_spf.mx.cloudflare.net include:_spf.tem.scaleway.com ~all"
+code.termina.one.	1	IN	TXT	"v=spf1 include:_spf.tem.scaleway.com -all"
+_dmarc.billing.termina.one.	1	IN	TXT	"v=DMARC1; p=none"
+_dmarc.code.termina.one.	1	IN	TXT	"v=DMARC1; p=none"
+_dmarc.termina.one.	1	IN	TXT	"v=DMARC1;  p=reject; rua=mailto:051cb54c36df4e289494df0db32eced6@dmarc-reports.cloudflare.net" ; managed by cloudflare
+termina.one.	3600	IN	TXT	"google-site-verification=Qougi0o67Ig2NefIckpcyOuU2vZz5TSNbvARpmjbs0Y"
+termina.one.	1	IN	TXT	"v=BIMI1;l=https://termina.one/t1_logo_tight.svg" ; TF: BIMI TXT record for root
+termina.one.	1	IN	TXT	"atlassian-domain-verification=uneiyJ25jZ8WgTHSg6wskTeEE4ghqgJVpM8NwpaEM0J1LkPog/ftZKWaPrD5qszj" ; TF: atlassian verification
+termina.one.	1	IN	TXT	"v=spf1 include:_spf.mx.cloudflare.net -all" ; managed by cloudflare

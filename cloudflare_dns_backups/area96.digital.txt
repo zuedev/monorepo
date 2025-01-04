@@ -1,0 +1,57 @@
+;;
+;; Domain:     area96.digital.
+;; Exported:   2025-01-04 18:08:17
+;;
+;; This file is intended for use for informational and archival
+;; purposes ONLY and MUST be edited before use on a production
+;; DNS server.  In particular, you must:
+;;   -- update the SOA record with the correct authoritative name server
+;;   -- update the SOA record with the contact e-mail address information
+;;   -- update the NS record(s) with the authoritative name servers for this domain.
+;;
+;; For further information, please consult the BIND documentation
+;; located on the following website:
+;;
+;; http://www.isc.org/
+;;
+;; And RFC 1035:
+;;
+;; http://www.ietf.org/rfc/rfc1035.txt
+;;
+;; Please note that we do NOT offer technical support for any use
+;; of this zone data, the BIND name server, or any other third-party
+;; DNS software.
+;;
+;; Use at your own risk.
+;; SOA Record
+area96.digital	3600	IN	SOA	jerry.ns.cloudflare.com. dns.cloudflare.com. 2048768069 10000 2400 604800 3600
+
+;; NS Records
+area96.digital.	86400	IN	NS	jerry.ns.cloudflare.com.
+area96.digital.	86400	IN	NS	kara.ns.cloudflare.com.
+
+;; CNAME Records
+7qentlskdhegc3frycefqvkr2uzh7tpa._domainkey.area96.digital.	1	IN	CNAME	7qentlskdhegc3frycefqvkr2uzh7tpa.dkim.amazonses.com. ; TF: apex amazon ses cf_tags=cf-proxied:false
+area96.digital.	1	IN	CNAME	www-area96-digital.pages.dev. ; TF: Apex domain to CF pages cf_tags=cf-proxied:true
+lcjizspw4azv363zdexyr2xny7dpgruq._domainkey.area96.digital.	1	IN	CNAME	lcjizspw4azv363zdexyr2xny7dpgruq.dkim.amazonses.com. ; TF: apex amazon ses cf_tags=cf-proxied:false
+lsfiuv2cf4cvrfa7fwdxbstrxw4k7gpk._domainkey.area96.digital.	1	IN	CNAME	lsfiuv2cf4cvrfa7fwdxbstrxw4k7gpk.dkim.amazonses.com. ; TF: apex amazon ses cf_tags=cf-proxied:false
+todo.area96.digital.	1	IN	CNAME	sovereign.zue.dev. ; cf_tags=cf-proxied:false
+www.area96.digital.	1	IN	CNAME	area96.digital. ; TF: www subdomain to apex domain cf_tags=cf-proxied:true
+
+;; MX Records
+area96.digital.	1	IN	MX	96 route3.mx.cloudflare.net.
+area96.digital.	1	IN	MX	84 route2.mx.cloudflare.net.
+area96.digital.	1	IN	MX	10 route1.mx.cloudflare.net.
+aws-ses.area96.digital.	1	IN	MX	10 feedback-smtp.eu-west-2.amazonses.com. ; TF: apex amazon ses
+todo.area96.digital.	1	IN	MX	10 blackhole.scw-tem.cloud.
+
+;; TXT Records
+32ecebc1-6144-4962-8a5d-d162420dc901._domainkey.todo.area96.digital.	1	IN	TXT	"v=DKIM1; h=sha256; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4o3DCNvgZXQ4xckZ01rh15UPsYJY1N2GbDa6RksbfSUpjY3DC3gNi33Lyj+7N+9lSvrBKs4FujVyMFKSo2ifTi+gOoA+q+otrfGPK36ojnt3y9ijAuN1tOFyZnuVF8uORP2NcaMpQAuKOpkzKjqnkkTnZ6DM4hW+jXqfH+wga0Fa6rCA31pxnei" "QYfO5CGx/yJ+KQGW/QKixGFXAJG9Eitxms4wzaRLBgBsAVItihybG3QEKTT4Kh6l5ssrHYvE1n04Bb+7CiLAA8i1QuLKyeA95fJidqfuzSQAsllVPZmwpI7OAlZa0NxH6YcKsJMSetjH/sBbFjbYzTi4r+EXk4QIDAQAB"
+area96.digital.	3600	IN	TXT	"google-site-verification=4vtTNjWglBGSTr41gU7W41etTtqEWAzbRkR9Q1uvp7A"
+area96.digital.	1	IN	TXT	"atlassian-domain-verification=uneiyJ25jZ8WgTHSg6wskTeEE4ghqgJVpM8NwpaEM0J1LkPog/ftZKWaPrD5qszj" ; TF: atlassian verification
+area96.digital.	1	IN	TXT	"v=spf1 include:_spf.mx.cloudflare.net -all" ; managed by cloudflare email
+_atproto.area96.digital.	1	IN	TXT	"did=did:plc:4qprvpjnm2cjulqvttp5bu5d" ; TF: bsky verification
+aws-ses.area96.digital.	1	IN	TXT	"v=spf1 include:amazonses.com -all" ; TF: apex amazon ses
+_dmarc.area96.digital.	1	IN	TXT	"v=DMARC1;  p=reject; rua=mailto:374ae5b8066d4eb9803d6ce53ad87ae8@dmarc-reports.cloudflare.net" ; managed by cloudflare
+_dmarc.todo.area96.digital.	1	IN	TXT	"v=DMARC1; p=none"
+todo.area96.digital.	1	IN	TXT	"v=spf1 include:_spf.tem.scaleway.com -all"

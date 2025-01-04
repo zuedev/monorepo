@@ -1,0 +1,45 @@
+;;
+;; Domain:     pixel.build.
+;; Exported:   2025-01-04 18:08:12
+;;
+;; This file is intended for use for informational and archival
+;; purposes ONLY and MUST be edited before use on a production
+;; DNS server.  In particular, you must:
+;;   -- update the SOA record with the correct authoritative name server
+;;   -- update the SOA record with the contact e-mail address information
+;;   -- update the NS record(s) with the authoritative name servers for this domain.
+;;
+;; For further information, please consult the BIND documentation
+;; located on the following website:
+;;
+;; http://www.isc.org/
+;;
+;; And RFC 1035:
+;;
+;; http://www.ietf.org/rfc/rfc1035.txt
+;;
+;; Please note that we do NOT offer technical support for any use
+;; of this zone data, the BIND name server, or any other third-party
+;; DNS software.
+;;
+;; Use at your own risk.
+;; SOA Record
+pixel.build	3600	IN	SOA	jerry.ns.cloudflare.com. dns.cloudflare.com. 2048768069 10000 2400 604800 3600
+
+;; NS Records
+pixel.build.	86400	IN	NS	jerry.ns.cloudflare.com.
+pixel.build.	86400	IN	NS	kara.ns.cloudflare.com.
+
+;; CNAME Records
+pixel.build.	1	IN	CNAME	www-pixel-build.pages.dev. ; TF: Apex domain to Vercel cf_tags=cf-proxied:false
+www.pixel.build.	1	IN	CNAME	www-pixel-build.pages.dev. ; TF: www subdomain to apex domain cf_tags=cf-proxied:false
+
+;; MX Records
+pixel.build.	1	IN	MX	52 route3.mx.cloudflare.net.
+pixel.build.	1	IN	MX	68 route2.mx.cloudflare.net.
+pixel.build.	1	IN	MX	43 route1.mx.cloudflare.net.
+
+;; TXT Records
+_dmarc.pixel.build.	1	IN	TXT	"v=DMARC1;  p=reject; rua=mailto:505d019ffc65488880c2ce1795311ce7@dmarc-reports.cloudflare.net" ; managed by cloudflare
+pixel.build.	1	IN	TXT	"atlassian-domain-verification=uneiyJ25jZ8WgTHSg6wskTeEE4ghqgJVpM8NwpaEM0J1LkPog/ftZKWaPrD5qszj" ; TF: atlassian verification
+pixel.build.	1	IN	TXT	"v=spf1 include:_spf.mx.cloudflare.net -all" ; managed by cloudflare
