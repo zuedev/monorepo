@@ -10,7 +10,7 @@ This repository is for everything I do that doesn't require a separate repositor
 
 This repository uses mirrors!
 
-The primary host is: https://gitlab.sovereign.zue.dev/zuedev/monorepo
+The primary host is: https://git.zue.dev/zuedev/monorepo
 
 Official mirrors are:
 
