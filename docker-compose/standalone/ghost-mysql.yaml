@@ -1,0 +1,24 @@
+services:
+
+  ghost:
+    image: ghost:5-alpine
+    restart: unless-stopped
+    ports:
+      - 39911:2368
+    environment:
+      database__client: mysql
+      database__connection__host: db
+      database__connection__user: root
+      database__connection__password: CHANGEME
+      database__connection__database: ghost
+      url: http://localhost:8080
+    volumes:
+      - ./ghost:/var/lib/ghost/content
+
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: CHANGEME
+    volumes:
+      - ./db:/var/lib/mysql
