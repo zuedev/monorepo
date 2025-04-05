@@ -5,7 +5,7 @@ services:
     restart: unless-stopped
     environment:
       GITEA__database__DB_TYPE: "sqlite3" # easy db
-      GIEA__server__SSH_PORT: "" # disable ssh
+      GITEA__server__SSH_PORT: "" # disable ssh
     volumes:
       - ./volumes/gitea/data/:/data
       - /etc/timezone:/etc/timezone:ro
