@@ -1,0 +1,40 @@
+services:
+
+  gitea:
+    image: gitea/gitea:1
+    restart: unless-stopped
+    environment:
+      GITEA__database__DB_TYPE: "sqlite3"
+      GITEA__database__DB_TYPE: "postgres"
+      GITEA__database__HOST: "postgres:5432"
+      GITEA__database__NAME: "gitea"
+      GITEA__database__USER: "gitea"
+      GITEA__database__PASSWD: "CHANGEME"
+    volumes:
+      - ./volumes/gitea/data/:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:17
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=gitea
+      - POSTGRES_PASSWORD=CHANGEME
+      - POSTGRES_DB=gitea
+    volumes:
+      - ./volumes/postgres/data/:/var/lib/postgresql/data
+
+  # runner1:
+  #   image: gitea/act_runner:latest
+  #   restart: unless-stopped
+  #   environment:
+  #     - GITEA_INSTANCE_URL=http://gitea:3000
+  #     - GITEA_RUNNER_REGISTRATION_TOKEN=COOL_TOKEN
+  #     - GITEA_RUNNER_NAME=gitea-docker-1
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
