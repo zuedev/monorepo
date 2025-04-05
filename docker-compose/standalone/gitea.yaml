@@ -1,0 +1,22 @@
+services:
+  gitea:
+    image: gitea/gitea:1
+    restart: unless-stopped
+    environment:
+      - GITEA__database__DB_TYPE=sqlite3
+    volumes:
+      - ./volumes/gitea/data/:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "3000:3000"
+
+  # runner1:
+  #   image: gitea/act_runner:latest
+  #   restart: unless-stopped
+  #   environment:
+  #     - GITEA_INSTANCE_URL=http://gitea:3000
+  #     - GITEA_RUNNER_REGISTRATION_TOKEN=COOL_TOKEN
+  #     - GITEA_RUNNER_NAME=gitea-docker-1
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
