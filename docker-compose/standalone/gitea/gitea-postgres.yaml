@@ -4,7 +4,6 @@ services:
     image: gitea/gitea:1
     restart: unless-stopped
     environment:
-      GITEA__database__DB_TYPE: "sqlite3"
       GITEA__database__DB_TYPE: "postgres"
       GITEA__database__HOST: "postgres:5432"
       GITEA__database__NAME: "gitea"
@@ -23,9 +22,9 @@ services:
     image: postgres:17
     restart: unless-stopped
     environment:
-      - POSTGRES_USER=gitea
-      - POSTGRES_PASSWORD=CHANGEME
-      - POSTGRES_DB=gitea
+      POSTGRES_USER: "gitea"
+      POSTGRES_PASSWORD: "CHANGEME"
+      POSTGRES_DB: "gitea"
     volumes:
       - ./volumes/postgres/data/:/var/lib/postgresql/data
 
