@@ -1,0 +1,13 @@
+services:
+  redbot:
+    image: phasecorex/red-discordbot:extra-pylav
+    restart: unless-stopped
+    volumes:
+      - ./redbot:/data
+    environment:
+      OWNER: "REPLACE_WITH_OWNER_ID"
+      TOKEN: "REPLACE_WITH_BOT_TOKEN"
+      PREFIX: "<@REPLACE_WITH_BOT_ID>"
+      TZ: "Europe/London"
+      PUID: "1000"
+      EXTRA_ARGS: "--mentionable"
