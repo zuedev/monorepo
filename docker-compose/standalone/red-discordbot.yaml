@@ -1,6 +1,6 @@
 services:
   redbot:
-    image: phasecorex/red-discordbot:extra-pylav
+    image: ghcr.io/phasecorex/red-discordbot:full-pylav
     restart: unless-stopped
     volumes:
       - ./redbot:/data
