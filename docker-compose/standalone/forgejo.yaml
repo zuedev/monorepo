@@ -1,0 +1,52 @@
+services:
+  server:
+    image: code.forgejo.org/forgejo/forgejo:12
+    environment:
+      - FORGEJO__database__DB_TYPE=mysql
+      - FORGEJO__database__HOST=db:3306
+      - FORGEJO__database__NAME=forgejo
+      - FORGEJO__database__USER=forgejo
+      - FORGEJO__database__PASSWD=CHANGE_ME
+    restart: unless-stopped
+    volumes:
+      - ./forgejo:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "4773:3000"
+      - "4774:22"
+    depends_on:
+      - db
+    command: >-
+      bash -c '
+          /usr/bin/s6-svscan /etc/s6 &
+          sleep 10 ;
+          su -c "forgejo forgejo-cli actions register --secret CHANGE_ME_TO_40_CHARS" git ;
+          sleep infinity
+      '
+
+  db:
+    image: mysql:9
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=forgejo
+      - MYSQL_USER=forgejo
+      - MYSQL_PASSWORD=CHANGE_ME
+      - MYSQL_DATABASE=forgejo
+    volumes:
+      - ./mysql:/var/lib/mysql
+
+  runner1:
+    image: code.forgejo.org/forgejo/runner:9
+    restart: unless-stopped
+    volumes:
+      - ./runner1-data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: >-
+      bash -ec '
+          while : ; do
+              forgejo-runner create-runner-file --connect --instance https://forgejo.saren.zue.dev --name runner --secret CHANGE_ME_TO_40_CHARS && break ;
+              sleep 1 ;
+          done ;
+      '
+    user: 0:0
