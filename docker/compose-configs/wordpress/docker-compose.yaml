@@ -1,0 +1,24 @@
+services:
+  wordpress:
+    image: wordpress:6
+    restart: unless-stopped
+    ports:
+      - 80:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: CHANGE_ME
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - ./volumes/wordpress/html:/var/www/html
+
+  db:
+    image: mysql:8
+    restart: unless-stopped
+    environment:
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: CHANGE_ME
+      MYSQL_DATABASE: wordpress
+      MYSQL_RANDOM_ROOT_PASSWORD: "1"
+    volumes:
+      - ./volumes/db/data:/var/lib/mysql
