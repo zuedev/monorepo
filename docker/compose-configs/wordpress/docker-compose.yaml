@@ -1,3 +1,5 @@
+x-variables: &db_password "CHANGE_ME"
+
 services:
   wordpress:
     image: wordpress:6
@@ -7,7 +9,7 @@ services:
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: CHANGE_ME
+      WORDPRESS_DB_PASSWORD: *db_password
       WORDPRESS_DB_NAME: wordpress
     volumes:
       - ./volumes/wordpress/html:/var/www/html
@@ -17,7 +19,7 @@ services:
     restart: unless-stopped
     environment:
       MYSQL_USER: wordpress
-      MYSQL_PASSWORD: CHANGE_ME
+      MYSQL_PASSWORD: *db_password
       MYSQL_DATABASE: wordpress
       MYSQL_RANDOM_ROOT_PASSWORD: "1"
     volumes:
