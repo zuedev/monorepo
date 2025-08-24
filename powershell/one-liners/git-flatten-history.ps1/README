@@ -1,0 +1,1 @@
+Run this in a git repo working tree (non-bare) to flatten the history of a branch into a single commit.
