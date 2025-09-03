@@ -1,9 +1,9 @@
 terraform {
-  backend "s3" {
-    bucket       = "git-zue-dev-monorepo-opentofu-state"
-    key          = "terraform.tfstate"
-    region       = "eu-west-2"
-    use_lockfile = true
+  cloud {
+    organization = "zuedev"
+    workspaces {
+      name = "zuedev-monorepo"
+    }
   }
 
   required_providers {
