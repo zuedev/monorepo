@@ -10,6 +10,13 @@
     VRChat: https://vrchat.com/
 #>
 
+# Are we in an elevated session?
+If (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))
+{
+    Write-Warning "You do not have Administrator rights to run this script! Please re-run this script as an Administrator!"
+    Break
+}
+
 # Download and install Winget v1.6.3482 as Shadow's default Winget version is broken
 Invoke-WebRequest -Uri "https://github.com/microsoft/winget-cli/releases/download/v1.6.3482/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle" -OutFile "C:\Users\Shadow\Downloads\Winget_Old.msixbundle"
 
