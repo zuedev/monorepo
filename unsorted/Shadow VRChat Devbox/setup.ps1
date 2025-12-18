@@ -44,8 +44,9 @@ winget install Unity.UnityHub # needed because life is pain
 winget install anatawa12.ALCOM # better vrchat creator companion
 winget install Git.Git # version control
 
-# Remove all stuff from desktop
-Remove-Item -Path "C:\Users\Shadow\Desktop\*" -Recurse -Force
+# Remove all stuff from desktop (both user and public desktop)
+Remove-Item -Path "C:\Users\Shadow\Desktop\*" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -Path "C:\Users\Public\Desktop\*" -Recurse -Force -ErrorAction SilentlyContinue
 
 # Reload environment variables to ensure newly installed software is recognized
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
