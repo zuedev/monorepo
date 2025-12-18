@@ -60,5 +60,9 @@ if (Test-Path $unityHubConfigPath) {
     $config | ConvertTo-Json | Set-Content $unityHubConfigPath
 }
 
+# Set Git global configuration
+git config --global user.name "zuedev"
+git config --global user.email "zuedev@gmail.com"
+
 # Final message
 Write-Host "VRChat Devbox setup complete."
