@@ -64,5 +64,13 @@ if (Test-Path $unityHubConfigPath) {
 git config --global user.name "zuedev"
 git config --global user.email "zuedev@gmail.com"
 
+# Make Windows Terminal default terminal
+$terminalSettingsPath = "C:\Users\Shadow\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+if (Test-Path $terminalSettingsPath) {
+    $settings = Get-Content $terminalSettingsPath | ConvertFrom-Json
+    $settings.defaultProfile = $settings.profiles.list | Where-Object { $_.name -eq "Windows PowerShell" } | Select-Object -ExpandProperty guid
+    $settings | ConvertTo-Json | Set-Content $terminalSettingsPath
+}
+
 # Final message
 Write-Host "VRChat Devbox setup complete."
