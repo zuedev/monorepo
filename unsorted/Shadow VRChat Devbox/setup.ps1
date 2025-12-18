@@ -18,13 +18,21 @@ If (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 }
 
 # Download and install Winget v1.6.3482 as Shadow's default Winget version is broken
-Invoke-WebRequest -Uri "https://github.com/microsoft/winget-cli/releases/download/v1.6.3482/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle" -OutFile "C:\Users\Shadow\Downloads\Winget_Old.msixbundle"
+$targetWingetVersion = "v1.6.3482"
+$currentWingetVersion = (winget --version 2>$null)
 
-# Install the downloaded Winget package
-Add-AppxPackage -Path "C:\Users\Shadow\Downloads\Winget_Old.msixbundle"
+if ($currentWingetVersion -ne $targetWingetVersion) {
+    Write-Host "Current Winget version ($currentWingetVersion) differs from target ($targetWingetVersion). Downgrading..."
+    Invoke-WebRequest -Uri "https://github.com/microsoft/winget-cli/releases/download/v1.6.3482/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle" -OutFile "C:\Users\Shadow\Downloads\Winget_Old.msixbundle"
 
-# Clean up downloaded Winget package
-Remove-Item -Path "C:\Users\Shadow\Downloads\Winget_Old.msixbundle" -Force
+    # Install the downloaded Winget package
+    Add-AppxPackage -Path "C:\Users\Shadow\Downloads\Winget_Old.msixbundle"
+
+    # Clean up downloaded Winget package
+    Remove-Item -Path "C:\Users\Shadow\Downloads\Winget_Old.msixbundle" -Force
+} else {
+    Write-Host "Winget is already at the target version ($targetWingetVersion). Skipping downgrade."
+}
 
 # Reset Winget source and remove msstore (has certificate issues on Shadow)
 winget source reset --force
