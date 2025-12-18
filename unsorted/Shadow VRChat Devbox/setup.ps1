@@ -26,8 +26,9 @@ Add-AppxPackage -Path "C:\Users\Shadow\Downloads\Winget_Old.msixbundle"
 # Clean up downloaded Winget package
 Remove-Item -Path "C:\Users\Shadow\Downloads\Winget_Old.msixbundle" -Force
 
-# Reset Winget source to default
+# Reset Winget source and remove msstore (has certificate issues on Shadow)
 winget source reset --force
+winget source remove msstore
 
 # Install required software using Winget
 winget install Unity.Unity.2022 -v "2022.3.22f1" # current LTS version vrchat uses
