@@ -1,0 +1,4 @@
+https://vcc.vrcfury.com/
+https://spokeek.github.io/goloco/index.json
+https://adjerry91.github.io/VRCFaceTracking-Templates/index.json
+https://vpm.nadena.dev/vpm.json

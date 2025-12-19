@@ -1,0 +1,18 @@
+{
+  "$type": "com.anatawa12.vrc-get.custom-template",
+  "formatVersion": "1.0",
+  "displayName": "VRChat Avatars (bayla preset + poipro)",
+  "updateDate": "2025-12-19T10:20:48.285745200Z",
+  "id": "com.anatawa12.vrc-get.user.8fee84c2febe4d8c85d5e24dfd1b22dc",
+  "base": "com.anatawa12.vrc-get.vrchat.avatars",
+  "unityVersion": "2022.3.22",
+  "vpmDependencies": {
+    "com.vrchat.avatars": "*",
+    "com.vrcfury.vrcfury": "*",
+    "com.llealloo.audiolink": "*",
+    "vrchat.blackstartx.gesture-manager": "*",
+    "gogoloco": "*",
+    "nadena.dev.modular-avatar": "*"
+  },
+  "unityPackages": []
+}
