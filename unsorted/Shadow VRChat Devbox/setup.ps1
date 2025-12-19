@@ -60,6 +60,35 @@ winget install motrix.Motrix # download manager
 winget install 7zip.7zip # archive manager
 winget install microsoft.VisualStudioCode # code editor
 
+# install and set up oh my posh
+winget install JanDeDobbeleer.OhMyPosh
+oh-my-posh font install Meslo
+
+# set powershell prompt to oh my posh
+$profilePath = "$HOME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
+
+if (-not (Test-Path -Path $profilePath)) {
+    New-Item -ItemType File -Path $profilePath -Force
+}
+
+$ohMyPoshInit = 'oh-my-posh init pwsh | Invoke-Expression'
+
+if (-not (Get-Content $profilePath | Select-String -Pattern 'oh-my-posh')) {
+    Add-Content -Path $profilePath -Value $ohMyPoshInit
+}
+
+# update windows terminal font
+$wtSettingsPath = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+
+if (Test-Path $wtSettingsPath) {
+    $wtSettings = Get-Content $wtSettingsPath | ConvertFrom-Json
+    foreach ($profile in $wtSettings.profiles.list) {
+        $profile.fontFace = "MesloLGS NF"
+    }
+    $wtSettings | ConvertTo-Json -Depth 32 | Set-Content $wtSettingsPath
+}
+
+# Install Google Chrome via chocolatey
 choco install googlechrome # browser
 
 # Remove all stuff from desktop (both user and public desktop)
