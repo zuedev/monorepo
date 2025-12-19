@@ -98,5 +98,8 @@ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer
 # show hidden files in explorer
 Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "Hidden" -Value 1
 
+# reload explorer to apply changes
+Stop-Process -Name explorer -Force
+
 # Final message
 Write-Host "VRChat Devbox setup complete."
