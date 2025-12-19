@@ -43,6 +43,8 @@ winget install Unity.Unity.2022 -v "2022.3.22f1" # current LTS version vrchat us
 winget install Unity.UnityHub # needed because life is pain
 winget install anatawa12.ALCOM # better vrchat creator companion
 winget install Git.Git # version control
+winget install google.chrome # browser
+winget install tailscale.tailscale # private network connectivity
 
 # Remove all stuff from desktop (both user and public desktop)
 Remove-Item -Path "C:\Users\Shadow\Desktop\*" -Recurse -Force -ErrorAction SilentlyContinue
