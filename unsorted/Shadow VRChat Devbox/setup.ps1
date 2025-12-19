@@ -20,6 +20,12 @@ If (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 # Install Chocolatey
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
+# pass -y to all choco installs
+choco feature enable -n allowGlobalConfirmation
+
+# disable checksum checks
+choco feature disable -n checksumFiles
+
 # Download and install Winget v1.6.3482 as Shadow's default Winget version is broken
 $targetWingetVersion = "v1.6.3482"
 $currentWingetVersion = (winget --version 2>$null)
