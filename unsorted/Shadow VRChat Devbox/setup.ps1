@@ -59,10 +59,18 @@ winget install tailscale.tailscale # private network connectivity
 winget install motrix.Motrix # download manager
 winget install 7zip.7zip # archive manager
 winget install microsoft.VisualStudioCode # code editor
+winget install JanDeDobbeleer.OhMyPosh # fancy terminal prompt
+
 choco install googlechrome # browser
 
-# install and set up oh my posh
-winget install JanDeDobbeleer.OhMyPosh
+# Remove all stuff from desktop (both user and public desktop)
+Remove-Item -Path "C:\Users\Shadow\Desktop\*" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -Path "C:\Users\Public\Desktop\*" -Recurse -Force -ErrorAction SilentlyContinue
+
+# Reload environment variables to ensure newly installed software is recognized
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+
+# set up oh my posh
 oh-my-posh font install Meslo
 
 # set powershell prompt to oh my posh
@@ -88,13 +96,6 @@ if (Test-Path $wtSettingsPath) {
     }
     $wtSettings | ConvertTo-Json -Depth 32 | Set-Content $wtSettingsPath
 }
-
-# Remove all stuff from desktop (both user and public desktop)
-Remove-Item -Path "C:\Users\Shadow\Desktop\*" -Recurse -Force -ErrorAction SilentlyContinue
-Remove-Item -Path "C:\Users\Public\Desktop\*" -Recurse -Force -ErrorAction SilentlyContinue
-
-# Reload environment variables to ensure newly installed software is recognized
-$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 
 # Set desktop wallpaper to vrchat
 $wallpaperUrl = "https://images.squarespace-cdn.com/content/v1/5f0770791aaf57311515b23d/1608240505246-O7TI4Z68YP4JF0MULQPT/VRC_Treehouse_5.png"
