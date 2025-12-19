@@ -17,6 +17,9 @@ If (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
     Break
 }
 
+# Install Chocolatey
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
 # Download and install Winget v1.6.3482 as Shadow's default Winget version is broken
 $targetWingetVersion = "v1.6.3482"
 $currentWingetVersion = (winget --version 2>$null)
@@ -38,13 +41,14 @@ if ($currentWingetVersion -ne $targetWingetVersion) {
 winget source reset --force
 winget source remove msstore
 
-# Install required software using Winget
+# Install required software
 winget install Unity.Unity.2022 -v "2022.3.22f1" # current LTS version vrchat uses
 winget install Unity.UnityHub # needed because life is pain
 winget install anatawa12.ALCOM # better vrchat creator companion
 winget install Git.Git # version control
-winget install google.chrome # browser
 winget install tailscale.tailscale # private network connectivity
+
+choco install googlechrome # browser
 
 # Remove all stuff from desktop (both user and public desktop)
 Remove-Item -Path "C:\Users\Shadow\Desktop\*" -Recurse -Force -ErrorAction SilentlyContinue
