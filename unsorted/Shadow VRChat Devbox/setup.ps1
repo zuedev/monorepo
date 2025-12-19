@@ -79,23 +79,5 @@ if (Test-Path $unityHubConfigPath) {
 git config --global user.name "zuedev"
 git config --global user.email "zuedev@gmail.com"
 
-# Make Windows Terminal default terminal
-$terminalSettingsPath = "C:\Users\Shadow\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
-if (Test-Path $terminalSettingsPath) {
-    # Read the file and strip comments (Windows Terminal uses JSONC format)
-    $jsonContent = Get-Content $terminalSettingsPath -Raw
-    # Remove single-line comments
-    $jsonContent = $jsonContent -replace '//.*?$', '' 
-    # Remove multi-line comments
-    $jsonContent = $jsonContent -replace '/\*[\s\S]*?\*/', ''
-    
-    $settings = $jsonContent | ConvertFrom-Json
-    $powershellProfile = $settings.profiles.list | Where-Object { $_.name -eq "Windows PowerShell" } | Select-Object -First 1
-    if ($powershellProfile) {
-        $settings.defaultProfile = $powershellProfile.guid
-        $settings | ConvertTo-Json -Depth 100 -Compress:$false | Set-Content $terminalSettingsPath -Encoding UTF8
-    }
-}
-
 # Final message
 Write-Host "VRChat Devbox setup complete."
