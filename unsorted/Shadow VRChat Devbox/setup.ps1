@@ -56,6 +56,9 @@ winget install Unity.UnityHub # needed because life is pain
 winget install anatawa12.ALCOM # better vrchat creator companion
 winget install Git.Git # version control
 winget install tailscale.tailscale # private network connectivity
+winget install motrix.Motrix # download manager
+winget install 7zip.7zip # archive manager
+winget install microsoft.VisualStudioCode # code editor
 
 choco install googlechrome # browser
 
