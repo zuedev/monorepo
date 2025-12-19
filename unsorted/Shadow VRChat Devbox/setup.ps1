@@ -92,5 +92,11 @@ if (Test-Path $unityHubConfigPath) {
 git config --global user.name "zuedev"
 git config --global user.email "zuedev@gmail.com"
 
+# show file extensions in explorer
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Value 0
+
+# show hidden files in explorer
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "Hidden" -Value 1
+
 # Final message
 Write-Host "VRChat Devbox setup complete."
