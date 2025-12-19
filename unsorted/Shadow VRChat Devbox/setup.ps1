@@ -50,7 +50,7 @@ if ($currentWingetVersion -ne $targetWingetVersion) {
 winget source reset --force
 winget source remove msstore
 
-# Install required software
+# mass-install required software that doesn't need special setup
 winget install Unity.Unity.2022 -v "2022.3.22f1" # current LTS version vrchat uses
 winget install Unity.UnityHub # needed because life is pain
 winget install anatawa12.ALCOM # better vrchat creator companion
@@ -59,6 +59,7 @@ winget install tailscale.tailscale # private network connectivity
 winget install motrix.Motrix # download manager
 winget install 7zip.7zip # archive manager
 winget install microsoft.VisualStudioCode # code editor
+choco install googlechrome # browser
 
 # install and set up oh my posh
 winget install JanDeDobbeleer.OhMyPosh
@@ -87,9 +88,6 @@ if (Test-Path $wtSettingsPath) {
     }
     $wtSettings | ConvertTo-Json -Depth 32 | Set-Content $wtSettingsPath
 }
-
-# Install Google Chrome via chocolatey
-choco install googlechrome # browser
 
 # Remove all stuff from desktop (both user and public desktop)
 Remove-Item -Path "C:\Users\Shadow\Desktop\*" -Recurse -Force -ErrorAction SilentlyContinue
