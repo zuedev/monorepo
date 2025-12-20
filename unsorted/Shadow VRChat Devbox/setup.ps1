@@ -98,7 +98,7 @@ if (Test-Path $wtSettingsPath) {
 }
 
 # Set desktop wallpaper to vrchat
-$wallpaperUrl = "https://images.squarespace-cdn.com/content/v1/5f0770791aaf57311515b23d/1608240505246-O7TI4Z68YP4JF0MULQPT/VRC_Treehouse_5.png"
+$wallpaperUrl = "https://forgejo.sovereign.zue.dev/zuedev/monorepo/raw/branch/main/unsorted/Shadow%20VRChat%20Devbox/wallpaper.png"
 $wallpaperPath = "C:\Users\Shadow\Pictures\vrchat_wallpaper.png"
 Invoke-WebRequest -Uri $wallpaperUrl -OutFile $wallpaperPath
 Add-Type -TypeDefinition @"
