@@ -1,4 +1,4 @@
-# Pi-hole with Tailscale
+# Pi-hole via Tailscale
 
 A Docker Compose stack that runs [Pi-hole](https://pi-hole.net/) behind [Tailscale](https://tailscale.com/), making your Pi-hole instance accessible only via your Tailnet.
 

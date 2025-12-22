@@ -10,6 +10,8 @@ services:
       - "./etc-pihole:/etc/pihole"
       - "./etc-dnsmasq.d:/etc/dnsmasq.d"
     restart: unless-stopped
+    cap_add:
+      - SYS_NICE
     depends_on:
       - tailscale
 
