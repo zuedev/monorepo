@@ -6,7 +6,7 @@ services:
       - PASSWORD=CHANGEME
     volumes:
       - ./config:/home/coder/.local/share/code-server
-      - /mnt/user/root/docker-compose:/home/coder/project
+      - ./project:/home/coder/project
     restart: unless-stopped
     command: ["--bind-addr", "0.0.0.0:80", "--auth", "password"]
 
