@@ -1,0 +1,25 @@
+services:
+  code-server:
+    image: codercom/code-server:4.107.0-39
+    network_mode: service:tailscale
+    environment:
+      - PASSWORD=CHANGEME
+    volumes:
+      - ./config:/home/coder/.local/share/code-server
+      - /mnt/user/root/docker-compose:/home/coder/project
+    restart: unless-stopped
+    command: ["--bind-addr", "0.0.0.0:80", "--auth", "password"]
+
+  tailscale:
+    image: tailscale/tailscale:v1.92.4
+    hostname: code-server
+    environment:
+      - TS_AUTH_ONCE="true"
+      - TS_STATE_DIR=/var/lib/tailscale
+    volumes:
+      - ./tailscale-data:/var/lib/tailscale
+      - /dev/net/tun:/dev/net/tun
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    restart: unless-stopped
