@@ -1,6 +1,12 @@
 #!/bin/bash
 
 ROOT_DIR="/mnt/user/root/docker-compose"
+
+# check pwd to see if we're in coder, change root dir
+if [[ "$(pwd)" == "/home/coder/project" ]]; then
+    ROOT_DIR="/home/coder/project"
+fi
+
 LOG_DIR="$ROOT_DIR/logs"
 
 # color setup (ANSI, with tput fallback). Disabled if not a TTY.
@@ -145,6 +151,47 @@ daily)
 reboot)
     execute_in_all_subdirs "docker compose up -d --remove-orphans"
     docker system prune --all --volumes --force
+    ;;
+check-tags)
+    issues_total=0
+    problematic_images=()
+    
+    for d in */; do
+        dir="${d%/}"
+        if has_compose_file "$dir"; then
+            printf "[%s] %s▶%s Checking %s%s%s...\n" "$(date -Is)" "$BLUE" "$RESET" "$BOLD" "$dir" "$RESET"
+            cd "$dir"
+            images=$(docker compose config 2>/dev/null | grep -E '^\s*image:' | awk '{print $2}')
+            has_issues=0
+            
+            while IFS= read -r image; do
+                if [ -n "$image" ]; then
+                    if [[ "$image" != *":"* ]] || [[ "$image" == *":latest" ]]; then
+                        printf "  %s⚠%s %s\n" "$YELLOW" "$RESET" "$image"
+                        has_issues=1
+                        issues_total=$((issues_total+1))
+                        problematic_images+=("$dir: $image")
+                    fi
+                fi
+            done <<< "$images"
+            
+            if [ $has_issues -eq 0 ]; then
+                printf "[%s] %s✔%s %s: No issues found\n" "$(date -Is)" "$GREEN" "$RESET" "$dir"
+            fi
+            
+            cd "$ROOT_DIR"
+        fi
+    done
+    
+    if [ $issues_total -gt 0 ]; then
+        printf "\n%s⚠ Found %d image(s) with dynamic tags:%s\n" "$YELLOW" "$issues_total" "$RESET"
+        for img in "${problematic_images[@]}"; do
+            printf "  - %s\n" "$img"
+        done
+        exit 1
+    else
+        printf "\n%s✔ All images use pinned tags%s\n" "$GREEN" "$RESET"
+    fi
     ;;
 *)
     echo "Unrecognized command: $1"
