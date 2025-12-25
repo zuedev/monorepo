@@ -9,6 +9,7 @@ This stack provides a code-server instance that allows you to edit Docker Compos
 ## Services
 
 ### code-server
+
 - **Base Image**: `codercom/code-server:4.107.0-bookworm`
 - **Purpose**: Web-based VS Code editor
 - **Features**:
@@ -17,6 +18,7 @@ This stack provides a code-server instance that allows you to edit Docker Compos
   - Accessible via Tailscale network
 
 ### tailscale
+
 - **Image**: `tailscale/tailscale:v1.92.4`
 - **Purpose**: Secure network access via Tailscale VPN
 - **Hostname**: `sovereign-docker-compose-editor`
@@ -24,19 +26,22 @@ This stack provides a code-server instance that allows you to edit Docker Compos
 ## Setup
 
 1. **Configure Password**
-   
+
    Edit the `PASSWORD` environment variable in the `docker-compose.yaml`:
+
    ```yaml
    environment:
      - PASSWORD=your-secure-password-here
    ```
 
 2. **Tailscale Authentication**
-   
+
    On first run, check the logs to get the Tailscale authentication URL:
+
    ```bash
    docker compose logs tailscale
    ```
+
    Visit the URL to authenticate the device to your Tailscale network.
 
 3. **Start the Services**
@@ -47,6 +52,7 @@ This stack provides a code-server instance that allows you to edit Docker Compos
 ## Access
 
 Once running and authenticated with Tailscale:
+
 - Access the editor at: `http://sovereign-docker-compose-editor`
 - Login with the password you configured
 
@@ -67,6 +73,7 @@ Once running and authenticated with Tailscale:
 ## Managing Docker Containers
 
 With the Docker CLI installed and socket mounted, you can:
+
 - View running containers: `docker ps`
 - Manage compose stacks: `docker compose up/down`
 - View logs: `docker compose logs`
@@ -75,13 +82,17 @@ With the Docker CLI installed and socket mounted, you can:
 ## Customization
 
 ### Change the Port
+
 The editor listens on port 80 within the Tailscale network. To change:
+
 ```yaml
 command: ["--bind-addr", "0.0.0.0:8080", "--auth", "password"]
 ```
 
 ### Change Project Directory
+
 Update the volume mount to point to your Docker Compose files:
+
 ```yaml
 volumes:
   - /your/compose/files:/home/coder/project
