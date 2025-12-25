@@ -1,0 +1,41 @@
+services:
+  code-server:
+    build:
+      context: .
+      dockerfile_inline: |
+        FROM codercom/code-server:4.107.0-bookworm
+
+        # Switch to root to install packages
+        USER root
+
+        # Install Docker CLI
+        RUN curl https://get.docker.com | sh
+
+        # Switch back to the default user
+        USER coder
+
+    network_mode: service:tailscale
+    environment:
+      - PASSWORD=CHANGEME
+    volumes:
+      - ./config:/home/coder/.local/share/code-server
+      - /mnt/user/root/docker-compose/:/home/coder/project
+      # Mount the Host Docker Socket
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+    command: ["--bind-addr", "0.0.0.0:80", "--auth", "password"]
+    user: root
+
+  tailscale:
+    image: tailscale/tailscale:v1.92.4
+    hostname: sovereign-docker-compose-editor
+    environment:
+      - TS_AUTH_ONCE="true"
+      - TS_STATE_DIR=/var/lib/tailscale
+    volumes:
+      - ./tailscale-data:/var/lib/tailscale
+      - /dev/net/tun:/dev/net/tun
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    restart: unless-stopped
