@@ -193,6 +193,23 @@ check-tags)
         printf "\n%s✔ All images use pinned tags%s\n" "$GREEN" "$RESET"
     fi
     ;;
+b2sync)
+    # is rclone installed?
+    if ! command -v rclone >/dev/null 2>&1; then
+        echo "rclone is not installed. Please install rclone to use this feature."
+        exit 1
+    fi
+
+    # perform backup using rclone
+    B2_BUCKET_NAME="sovereign-docker-compose-sync-clone"
+    B2_KEY_ID="B2_KEY_ID"
+    B2_KEY_SECRET="B2_KEY_SECRET"
+    RCLONE_REMOTE=":b2,fast_list,hard_delete,account=$B2_KEY_ID,key=$B2_KEY_SECRET:$B2_BUCKET_NAME"
+
+    echo "Starting backup to Backblaze B2..."
+    rclone sync --progress "$ROOT_DIR/" "$RCLONE_REMOTE"
+    echo "Backup completed."
+    ;;
 *)
     echo "Unrecognized command: $1"
     ;;
