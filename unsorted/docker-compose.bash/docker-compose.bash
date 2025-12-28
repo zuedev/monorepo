@@ -201,7 +201,11 @@ b2sync)
     fi
 
     # directory exclusions
-    EXCLUDE_DIRS=("unity-accelerator")
+    EXCLUDE_DIRS=("unity-accelerator/agent")
+    B2_EXCLUDE_PARAMS=()
+    for exdir in "${EXCLUDE_DIRS[@]}"; do
+        B2_EXCLUDE_PARAMS+=("--exclude" "$exdir/**")
+    done
 
     # perform backup using rclone
     B2_BUCKET_NAME="sovereign-docker-compose-sync-clone"
@@ -210,21 +214,7 @@ b2sync)
     RCLONE_REMOTE=":b2,fast_list,hard_delete,account=$B2_KEY_ID,key=$B2_KEY_SECRET:$B2_BUCKET_NAME"
 
     echo "Starting backup to Backblaze B2..."
-    for d in */; do
-        dir="${d%/}"
-        skip_dir=0
-        for ex in "${EXCLUDE_DIRS[@]}"; do
-            if [ "$dir" == "$ex" ]; then
-                skip_dir=1
-                echo "Skipping excluded directory: $dir"
-                break
-            fi
-        done
-        if [ $skip_dir -eq 0 ]; then
-            echo "Backing up directory: $dir"
-            rclone sync "$ROOT_DIR/$dir" "$RCLONE_REMOTE/$dir" --progress
-        fi
-    done
+    rclone sync "$ROOT_DIR/$dir" "$RCLONE_REMOTE/$dir" --progress "${B2_EXCLUDE_PARAMS[@]}" --checkers=32 --transfers=32
     echo "Backup completed."
     ;;
 *)
