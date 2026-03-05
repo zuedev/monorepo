@@ -5,6 +5,7 @@ Results-oriented Software Engineer and Solutions Architect with over 14 years’
 ## Personal Information
 
 - **Full Name:** Alexander James Pooley
+- **Location:** Harwich, Essex, United Kingdom
 - **Email:** alex@zue.dev
 - **Phone:** +44 7 943 941 456
 - **Website:** [zue.dev](https://zue.dev)
