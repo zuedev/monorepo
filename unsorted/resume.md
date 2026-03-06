@@ -14,6 +14,7 @@ Results-oriented Software Engineer and Solutions Architect with over 14 years’
 
 - **GitHub:** [github.com/zuedev](https://github.com/zuedev)
 - **LinkedIn:** [linkedin.com/in/zuedev](https://linkedin.com/in/zuedev)
+- **ORCID:** [orcid.org/0009-0006-6460-8957](https://orcid.org/0009-0006-6460-8957)
 
 ## Summary
 
