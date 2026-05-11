@@ -1,0 +1,13 @@
+{
+  "$schema": "https://git.zue.dev/gitinfo/plain/gitinfo.schema.json",
+  "root": "https://git.zue.dev/monorepo/",
+  "gitmail": "patches+monorepo@zue.dev",
+  "description": "For all the stuff I want in git but don't want to make a repo for.",
+  "maintainers": [
+    [
+      "Alex (@zuedev)",
+      "zuedev@gmail.com"
+    ]
+  ],
+  "license": "Unlicense"
+}
