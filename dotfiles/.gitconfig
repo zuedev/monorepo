@@ -1,0 +1,9 @@
+[user]
+    email = zuedev@gmail.com
+    name = Alex Pooley (@zuedev)
+
+[alias]
+    sync = !git add -A && git commit && git push
+    nuke = !git clean -df && git reset --hard
+    zdinit = !ssh git@git -C "git init --bare $1" && git clone git@git:$1 
+    undo = reset --soft HEAD^
