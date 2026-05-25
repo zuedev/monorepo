@@ -1,0 +1,27 @@
+services:
+  pihole:
+    image: pihole/pihole:2025.11.1
+    ports:
+      # DNS
+      - "53:53/tcp"
+      - "53:53/udp"
+      # HTTP
+      - "80:80/tcp"
+      # HTTPS
+      - "443:443/tcp"
+      # DHCP
+      - "67:67/udp"
+      # NTP
+      - "123:123/udp"
+    environment:
+      TZ: "Europe/London"
+      FTLCONF_webserver_api_password: "CHANGEME"
+      FTLCONF_dns_listeningMode: "ALL"
+    volumes:
+      - "./etc-pihole:/etc/pihole"
+      - "./etc-dnsmasq.d:/etc/dnsmasq.d"
+    cap_add:
+      - NET_ADMIN
+      - SYS_TIME
+      - SYS_NICE
+    restart: unless-stopped
