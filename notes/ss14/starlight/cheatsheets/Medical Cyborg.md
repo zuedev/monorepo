@@ -35,11 +35,3 @@ Each recipe fills a 60u beaker. Set the dispenser to **10** unless a step says o
 4. Silicon ×1 (10u)
 5. Nitrogen ×1 (10u)
 6. Potassium ×1 (10u) → beaker reads **60 Tricordrazine**
-
-Inaprovaline first, then Dylovene. Reversed order makes Ethylredoxrazine instead.
-
-## ⚠️ Don'ts
-
-- **Never mix Bicaridine with Bruizine, Lacerinol, or Puncturase.** Any pair makes Razorium. Bic gets its own beaker.
-- **Dermaline ODs at 10u.** Pill it in 5u doses, never bottle-dose.
-- **No water in the beaker before Potassium.** Rinse if you reused it for Saline.
